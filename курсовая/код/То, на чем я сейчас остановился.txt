@@ -1,0 +1,61 @@
+C:\Users\user\PycharmProjects\pythonProject\venv\Scripts\python.exe D:\Downloads\code\main.py 
+Device: cuda
+Namespace(batch_size=32, lr=1e-05, dataset='cedar')
+SigNet(
+  (features): Sequential(
+    (0): Conv2d(1, 96, kernel_size=(11, 11), stride=(1, 1))
+    (1): ReLU()
+    (2): LocalResponseNorm(5, alpha=0.0001, beta=0.75, k=2)
+    (3): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (4): Conv2d(96, 256, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2))
+    (5): LocalResponseNorm(5, alpha=0.0001, beta=0.75, k=2)
+    (6): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (7): Dropout(p=0.3, inplace=False)
+    (8): Conv2d(256, 384, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (9): Conv2d(384, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (10): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (11): Dropout(p=0.3, inplace=False)
+    (12): Flatten(start_dim=1, end_dim=-1)
+    (13): Linear(in_features=119808, out_features=1024, bias=True)
+    (14): Dropout(p=0.5, inplace=False)
+    (15): Linear(in_features=1024, out_features=128, bias=True)
+  )
+)
+Epoch 0/20
+Training --------------------
+Training:   5%|▌         | 50/938 [05:44<1:40:48,  6.81s/it]50/938: Loss: 0.3335
+Training:  11%|█         | 100/938 [11:19<1:32:25,  6.62s/it]100/938: Loss: 0.1858
+Training:  16%|█▌        | 150/938 [16:49<1:26:49,  6.61s/it]150/938: Loss: 0.1799
+Training:  21%|██▏       | 200/938 [22:18<1:20:58,  6.58s/it]200/938: Loss: 0.1777
+Training:  27%|██▋       | 250/938 [27:47<1:15:21,  6.57s/it]250/938: Loss: 0.1784
+Training:  32%|███▏      | 300/938 [33:21<1:11:27,  6.72s/it]300/938: Loss: 0.1786
+Training:  37%|███▋      | 350/938 [38:56<1:05:08,  6.65s/it]350/938: Loss: 0.1781
+Training:  43%|████▎     | 400/938 [44:27<59:16,  6.61s/it]400/938: Loss: 0.1772
+Training:  48%|████▊     | 450/938 [49:57<53:43,  6.61s/it]450/938: Loss: 0.1761
+Training:  53%|█████▎    | 500/938 [55:26<47:59,  6.58s/it]500/938: Loss: 0.1706
+Training:  59%|█████▊    | 550/938 [1:00:55<42:28,  6.57s/it]550/938: Loss: 0.1762
+Training:  64%|██████▍   | 600/938 [1:06:23<37:00,  6.57s/it]600/938: Loss: 0.1745
+Training:  69%|██████▉   | 650/938 [1:11:52<31:31,  6.57s/it]650/938: Loss: 0.1767
+Training:  75%|███████▍  | 700/938 [1:17:21<26:14,  6.62s/it]700/938: Loss: 0.1733
+Training:  80%|███████▉  | 750/938 [1:22:50<20:39,  6.59s/it]750/938: Loss: 0.1766
+Training:  85%|████████▌ | 800/938 [1:28:20<15:09,  6.59s/it]800/938: Loss: 0.1765
+Training:  91%|█████████ | 850/938 [1:34:05<10:09,  6.93s/it]850/938: Loss: 0.1816
+Training:  96%|█████████▌| 900/938 [1:39:59<04:16,  6.74s/it]900/938: Loss: 0.1742
+Training: 100%|██████████| 938/938 [1:44:12<00:00,  6.67s/it]
+938/938: Loss: 0.1792
+Evaluating --------------------
+Evaluating:  85%|████████▍ | 50/59 [01:58<00:20,  2.33s/it]50/59: Loss: 0.3932
+Evaluating: 100%|██████████| 59/59 [02:19<00:00,  2.36s/it]
+59/59: Loss: 0.3352
+Traceback (most recent call last):
+  File "D:\Downloads\code\main.py", line 135, in <module>
+    loss, acc = eval(model, criterion, testloader)
+  File "C:\Users\user\PycharmProjects\pythonProject\venv\lib\site-packages\torch\utils\_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+  File "D:\Downloads\code\main.py", line 66, in eval
+    max_accuracy = accuracy(distances, y)
+  File "D:\Downloads\code\metrics.py", line 11, in accuracy
+    true_positive = (distances <= threshold_d) & (~same_id)
+TypeError: ~ (operator.invert) is only implemented on integer and Boolean-type tensors
+
+Process finished with exit code 1
